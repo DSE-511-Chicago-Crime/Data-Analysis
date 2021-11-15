@@ -11,7 +11,7 @@ proposal.pdf contains more information on motivation and research questions.
 Git-lfs to access data.
 Python 3 & packages: Pandas, Numpy, Matplotlib
 
-##Repository structure
+## Repository structure
 *data* subdirectory contains raw data.
 *scripts* subdirectory contains common-use scripts and notebooks for tasks like preprocessing.
 Research questions will each have their own subdirectory with a module that can be called by main, as well as any supplementary files that module needs to run.
