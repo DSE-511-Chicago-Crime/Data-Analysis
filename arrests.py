@@ -12,7 +12,7 @@ df['date'] = pandas.to_datetime(df['date'], format='%Y-%m-%d %H:%M:%S+00:00')
 dates = df['date'].to_numpy()
 arrests = df['arrest'].to_numpy()
 arrest_dates = dates[arrests == 1]
-weeks  = pandas.date_range(start="2019-01-01",end="2021-01-01", freq='W').to_numpy()
+weeks  = pandas.date_range(start="2019-01-01",end="2021-11-14", freq='W').to_numpy()
 
 fig, ax = plt.subplots()
 plt.hist(dates, bins=weeks, label='Crimes')
