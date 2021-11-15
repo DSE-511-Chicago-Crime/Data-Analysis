@@ -1,5 +1,6 @@
 
 import pandas as pd
+import numpy as np
 
 data_file_2019 = pd.read_csv("../data/2019_crime.csv")
 print(data_file_2019.head())
