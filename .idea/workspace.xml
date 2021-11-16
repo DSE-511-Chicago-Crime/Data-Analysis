@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c4043bb-e1b6-4a1a-a64a-c818ed5c5377" name="Changes" comment="update azal crime script_5" />
+    <list default="true" id="9c4043bb-e1b6-4a1a-a64a-c818ed5c5377" name="Changes" comment="updating crime code">
+      <change beforePath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/Crime_analysis_az-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/Crime_analysis_az-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Crime_analysis_az.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Crime_analysis_az.ipynb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +16,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Settings">
     <favorite-branches>
