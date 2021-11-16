@@ -10,12 +10,14 @@
 # Current state notes
 * The release version of this repository does not yet have a main script, but temporary main scripts exist in feature branches.
 
-* Added scripts to extract and collate data in the scripts directory.
+* A develop script is utilized for preliminary binding of code before cleaning and put into main.
+
+* Added scripts to extract and collate data in the scripts directory. 
 
 # Overview
 1. An analysis of crime records from Chicago in the years 2019, 2020, and 2021 (up to Nov. 14).
 
-2. An analysis of the most district has more crime numbers.
+2. An analysis of Chicago districts with crime statistics: dates, arrests, type.
 
 3. proposal.pdf contains more information on motivation and research questions.
 
