@@ -1,27 +1,37 @@
 # How did the COVID-19 Pandemic Effect Crime in Chicago?
-## Current state notes
-The release version of this repository does not yet have a main script, but temporary main scripts exist in feature branches.
 
-Added scripts to extract and collate data in the scripts directory.
+## Table of contents
+*  Current state notes
+*  Overview
+*  Requirements
+*  Repository structure
+*  Sources
 
-## Overview
-An analysis of crime records from Chicago in the years 2019, 2020, and 2021 (up to Nov. 14).
+# Current state notes
+* The release version of this repository does not yet have a main script, but temporary main scripts exist in feature branches.
 
-An analysis of the most district has more crime numbers.
+* Added scripts to extract and collate data in the scripts directory.
 
+# Overview
+1. An analysis of crime records from Chicago in the years 2019, 2020, and 2021 (up to Nov. 14).
 
-proposal.pdf contains more information on motivation and research questions.
+2. An analysis of the most district has more crime numbers.
 
-## Requirements
-Git-lfs to access data.
+3. proposal.pdf contains more information on motivation and research questions.
 
-Python 3 & packages: Pandas, Numpy, Matplotlib
+# Requirements
+1. Git-lfs to access data.
 
-## Repository structure
-*data* subdirectory contains raw data.
+2. Python 3 & packages: Pandas, Numpy, Matplotlib
 
-*scripts* subdirectory contains common-use scripts and notebooks for tasks like preprocessing.
+# Repository structure
+1. *data* subdirectory contains raw data.
 
-Research questions will each have their own subdirectory with a module that can be called by main, as well as any supplementary files that module needs to run.
+2. *scripts* subdirectory contains common-use scripts and notebooks for tasks like preprocessing.
 
-## Resources
+3. Research questions will each have their own subdirectory with a module that can be called by main, as well as any supplementary files that module needs to run.
+
+# Sources
+
+1. [https://www.kaggle.com/chicago/chicago-crime]
+2. [https://data.cityofchicago.org/]
