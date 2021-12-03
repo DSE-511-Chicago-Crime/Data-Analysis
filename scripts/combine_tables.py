@@ -11,7 +11,7 @@ df2020 = pandas.read_csv('./data/2020_crime.csv')
 df2021 = pandas.read_csv('./data/2021_crime.csv')
 
 #combine the dataframes
-df = pandas.concat([df2019, df2020, df2021])
+df = pandas.concat([df2015, df2016, df2017, df2018, df2019, df2020, df2021])
 
 #csv in case anyone can't work with pickle
 df.to_csv('./data/combineddata.csv')
