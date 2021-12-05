@@ -25,29 +25,30 @@ class analyzeArrests:
         plt.title('Arrests and crimes per week')
         plt.legend()
         plt.show()
+
     def get_types(self):
-        return self.types
-        
-    def genMonthlyArrestProportions(self, type='all'):
+        return np.unique(self.types)
+
+    def genMonthlyArrestProportions(self, crime_type='all'):
         # Generate a list of the number of arrests per month
         # This is used to generate the monthly arrest proportion plot
         #aaaaaa the data isn't in date order
-        if type == 'all':
+        if crime_type == 'all':
             dates = self.dates
             arrests = self.arrests
 
         else:
-            dates = self.dates[self.types == type]
-            arrests = self.arrests[self.types == type]
+            dates = self.dates[self.types == crime_type]
+            arrests = self.arrests[self.types == crime_type]
 
-        monthly_crimes = [1 for _ in range(7 * 12 - 1)]
-        monthly_arrests = [1 for _ in range(7 * 12 - 1)]
+        monthly_crimes = [0 for _ in range(7 * 12 - 1)]
+        monthly_arrests = [0 for _ in range(7 * 12 - 1)]
         months = [i for i in range(7 * 12 - 1)]
         pd_dates = pd.to_datetime(dates)
-        for i in tqdm(range(len(dates)), desc='Generating monthly arrest proportions'):
+        for i in tqdm(range(len(dates)), desc=('Generating monthly arrest proportions for ' + crime_type)):
             month = ((pd_dates[i].month - 1) + pd_dates[i].year * 12) -(2015 * 12)
             monthly_crimes[month] += 1
-            if arrests[i] == 1:
+            if arrests[i] == True:
                 monthly_arrests[month] += 1
         monthly_crimes = np.array(monthly_crimes)
         monthly_arrests = np.array(monthly_arrests)
@@ -62,39 +63,58 @@ class analyzeArrests:
         monthly_arrest_proportion = np.load('arrests/monthly_arrest_proportion.npy')
         return monthly_arrest_proportion
 
-    def plotMonthlyArrestProportions(self, monthly_arrest_proportion):
+    def plotMonthlyArrestProportions(self, monthly_arrest_proportion, crime_type='all'):
+        months = self.months[~np.isnan(monthly_arrest_proportion)]
+        monthly_arrest_proportion = monthly_arrest_proportion[~np.isnan(monthly_arrest_proportion)]
 
+        parameters = pd.DataFrame(index=[crime_type], columns=['all_a', 'all_b', 'all_c', 'pre_a', 'pre_b', 'pre_c', 'post_a', 'post_b', 'post_c'])
         # Plot the monthly arrest proportion
         def objective(x, a, b, c):
 	        return a * x + b * x**2 + c
         # curve fit for all months
-        popt, _ = curve_fit(objective, self.months, monthly_arrest_proportion)
+        popt, _ = curve_fit(objective, months, monthly_arrest_proportion)
         a, b, c = popt
+        parameters['all_a'] = a
+        parameters['all_b'] = b
+        parameters['all_c'] = c
         print('all months')
         print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
-        y_line = objective(self.months, a, b, c)
+        y_line = objective(months, a, b, c)
 
         # curve fit for prepandemic months (until march 2020)
-        popt, _ = curve_fit(objective, self.months[0:63], monthly_arrest_proportion[0:63])
-        a, b, c = popt
         print('prepandemic')
-        print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
-        y_line_before = objective(self.months, a, b, c)
+        if months[months <= 2020.25].size > 0:
+            popt, _ = curve_fit(objective, months[months <= 2020.25], monthly_arrest_proportion[months <= 2020.25])
+            a, b, c = popt
+            parameters['pre_a'] = a
+            parameters['pre_b'] = b
+            parameters['pre_c'] = c
+            print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
+            y_line_before = objective(months, a, b, c)
+        else:
+            y_line_before = np.array([0 for _ in range(len(months))])
 
         # curve fit for postpandemic months (after march 2020)
-        popt, _ = curve_fit(objective, self.months[63:], monthly_arrest_proportion[63:])
-        a, b, c = popt
-        print('postpandemic')
-        print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
-        y_line_after = objective(self.months, a, b, c)
+        if months[months >= 2020.25].size > 0:
+            popt, _ = curve_fit(objective, months[months >= 2020.25], monthly_arrest_proportion[months >= 2020.25])
+            a, b, c = popt
+            parameters['post_a'] = a
+            parameters['post_b'] = b
+            parameters['post_c'] = c
+            print('postpandemic')
+            print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
+            y_line_after = objective(months, a, b, c)
+        else:
+            y_line_after = np.array([0 for _ in range(len(months))])
 
         fig, ax = plt.subplots()
-        plt.scatter(self.months, monthly_arrest_proportion)
+        plt.scatter(months, monthly_arrest_proportion)
          # create a line plot for the mapping function
-        plt.plot(self.months, y_line, '--', color='red', label='all months')
-        plt.plot(self.months, y_line_before, '--', color='blue', label='prepandemic')
-        plt.plot(self.months, y_line_after, '--', color='green', label='postpandemic')
-        plt.ylim(monthly_arrest_proportion.min() - 0.1, monthly_arrest_proportion.max() + 0.1)
-        plt.title('Monthly Arrest Proportion')
+        plt.plot(months, y_line, '--', color='red', label='all months')
+        plt.plot(months, y_line_before, '--', color='blue', label='prepandemic')
+        plt.plot(months, y_line_after, '--', color='green', label='postpandemic')
+        plt.ylim(monthly_arrest_proportion.min() - 0.01, monthly_arrest_proportion.max() + 0.1)
+        plt.title('Monthly Arrest Proportion ' + crime_type)
         plt.legend()
-        plt.show()
+        plt.savefig('arrests/charts/per_crime_type/' + crime_type + '_proportion.png')
+        return parameters

@@ -14,4 +14,5 @@ numpy.save('arrests/arrests.npy', arrests)
 
 types = df['primary_type'].to_numpy()
 types = numpy.where(types == 'NON - CRIMINAL', 'NON-CRIMINAL', types)
+types = numpy.where(types == 'CRIM SEXUAL ASSAULT', 'CRIMINAL SEXUAL ASSAULT', types)
 numpy.save('arrests/types.npy', types)
