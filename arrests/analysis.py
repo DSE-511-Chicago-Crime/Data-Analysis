@@ -14,7 +14,7 @@ class analyzeArrests:
 
         self.arrest_dates = self.dates[self.arrests == 1]
         self.weeks  = pd.date_range(start="2019-01-01",end="2021-11-14", freq='W').to_numpy()
-    
+
 
     def plotArrestsToCrimesOverTime(self):
         fig, ax = plt.subplots()
@@ -113,8 +113,52 @@ class analyzeArrests:
         plt.plot(months, y_line, '--', color='red', label='all months')
         plt.plot(months, y_line_before, '--', color='blue', label='prepandemic')
         plt.plot(months, y_line_after, '--', color='green', label='postpandemic')
+        plt.axvline(x=2020.25, color='orange', linestyle='-' , label='March 2020')
         plt.ylim(monthly_arrest_proportion.min() - 0.01, monthly_arrest_proportion.max() + 0.1)
         plt.title('Monthly Arrest Proportion ' + crime_type)
         plt.legend()
         plt.savefig('arrests/charts/per_crime_type/' + crime_type + '_proportion.png')
         return parameters
+    
+    def setParameters(self, parameters=None):
+        if parameters is None:
+            self.parameters = pd.read_csv('arrests/parameters.csv', index_col=0)
+        else:
+            self.parameters = parameters
+
+    def findOutliers(self, proportions, crimetype='all', parameters=None):
+        months = self.months[~np.isnan(proportions)]
+        proportions = proportions[~np.isnan(proportions)]
+
+        def objective(x, a, b, c):
+	        return a * x + b * x**2 + c
+        if parameters is None:        
+            paraemeters = self.parameters
+        
+        a = parameters.loc[crimetype, 'all_a']
+        b = parameters.loc[crimetype, 'all_b']
+        c = parameters.loc[crimetype, 'all_c']
+        print(a, b, c)
+
+        errors = {}
+
+        y_pred = objective(months, a, b, c)
+        se = np.square(y_pred - proportions)
+
+        sse = np.sum(se)
+        output = 'crime type: ' + crimetype + '\n'
+        output += 'SUM SQUARED ERROR: ' + str(sse) + '\n'
+        j = 0
+        for i in se:
+            errors[i] = months[j]
+            j += 1
+
+        output += 'months with highest error:' + '\n'
+        for i in sorted(errors.keys()):
+            output += (str(errors[i]) + ' error ' + str(i) + '\n')
+        return output
+
+
+
+
+
