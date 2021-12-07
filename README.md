@@ -24,7 +24,7 @@
 # Requirements
 1. Git-lfs to access data.
 
-2. Python 3 & packages: Pandas, Numpy, Matplotlib
+2. Python 3 & packages: Pandas, Numpy, Matplotlib, tqdm, scipy
 
 # Repository structure
 1. *data* subdirectory contains raw data.
