@@ -148,7 +148,6 @@ class analyzeArrests:
         a = parameters.loc[crimetype, 'all_a']
         b = parameters.loc[crimetype, 'all_b']
         c = parameters.loc[crimetype, 'all_c']
-        print(a, b, c)
 
         errors = {}
         # find square error
