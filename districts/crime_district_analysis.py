@@ -220,7 +220,7 @@ class crime_district_analysis:
         ax6.set_ylim(0, 20000)
 
         fig.suptitle('Number of Crimes Per Districts of Chicago city USA From 2016 to 2021', fontsize=12)
-        plt.savefig("./Azal/Number_of_Crimes_Per_Districts_of_Chicago_city.png", dpi=300)
+        plt.savefig("./districts/Number_of_Crimes_Per_Districts_of_Chicago_city.png", dpi=300)
         plt.show()
 
         #Calculate the total crimes and their proportions of Chicago city from 2016 to 2021 based on grouped regions.
@@ -269,7 +269,7 @@ class crime_district_analysis:
         ax6.set_xlabel('2021')
 
         fig.suptitle('Crime distribution per region in Chicago city',fontsize=12)
-        plt.savefig("./Azal/Crime_distribution_per_region_in_Chicago_city.png",dpi=300)
+        plt.savefig("./districts/Crime_distribution_per_region_in_Chicago_city.png",dpi=300)
         plt.show()
 
         # calculating the percent change of the primary_type of crimes per districts for each tow consecutive years
@@ -395,5 +395,5 @@ class crime_district_analysis:
         plt.suptitle('The Percent Change of Crimes Per District in Chicago city, USA from 2016 to 2021'
                     '\nThe change is computed between each two successive years.',fontsize=12)
         fig.tight_layout()
-        plt.savefig("./Azal/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png",dpi=300)
+        plt.savefig("./districts/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png",dpi=300)
         plt.show()
