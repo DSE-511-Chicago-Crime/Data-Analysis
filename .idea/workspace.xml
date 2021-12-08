@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c4043bb-e1b6-4a1a-a64a-c818ed5c5377" name="Changes" comment="updating crime code">
-      <change afterPath="$PROJECT_DIR$/scripts/crime_district_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/newver-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/newver-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/newver.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/newver.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="9c4043bb-e1b6-4a1a-a64a-c818ed5c5377" name="Changes" comment="updating crime code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638920338507</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="updating crime code">
+      <created>1638932338676</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1638932338676</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
