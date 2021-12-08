@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c4043bb-e1b6-4a1a-a64a-c818ed5c5377" name="Changes" comment="updating crime code">
-      <change beforePath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/Crime_analysis_az-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/Crime_analysis_az-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Crime_analysis_az.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Crime_analysis_az.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/crime_district_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/newver-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/.ipynb_checkpoints/newver-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/The_Percent_Change_of_Crimes_Per_District_in_Chicago_city.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/newver.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/newver.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +62,28 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.crime_district_analysis">
+    <configuration name="crime_district_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Data-Analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/crime_district_analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="crime_location_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Data-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,6 +107,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.crime_district_analysis" />
         <item itemvalue="Python.crime_location_analysis" />
       </list>
     </recent_temporary>
@@ -147,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637012679844</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updating crime code">
+      <created>1638920338507</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1638920338507</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +220,7 @@
     <MESSAGE value="update azal crime script_3" />
     <MESSAGE value="update azal crime script_4" />
     <MESSAGE value="update azal crime script_5" />
-    <option name="LAST_COMMIT_MESSAGE" value="update azal crime script_5" />
+    <MESSAGE value="updating crime code" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating crime code" />
   </component>
 </project>
