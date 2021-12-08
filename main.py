@@ -1,6 +1,6 @@
 import arrests.arrestsRunner as arrestsRunner
 import domestic.domesticRunner as domesticRunner
-import Azal.crime_district_analysis as crime_district_analysis
+import districts.crime_district_analysis as crime_district_analysis
 
 # Analysis of domestic cases - results shown with plt.show()
 dr = domesticRunner.domesticRunner()
