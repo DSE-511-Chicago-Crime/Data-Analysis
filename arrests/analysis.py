@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from scipy.optimize import curve_fit
+import math
 
 class analyzeArrests:
     # initialize and read the numpy files needed
@@ -25,7 +26,7 @@ class analyzeArrests:
         fig.autofmt_xdate()
         plt.title('Arrests and crimes per week')
         plt.legend()
-        plt.show()
+        plt.savefig('arrests/charts/weekly.png')
 
     # list of types of crimes
     def get_types(self):
@@ -69,7 +70,7 @@ class analyzeArrests:
         return monthly_arrest_proportion
     # graphs of monthly arrest proportions
     # regression lines
-    def plotMonthlyArrestProportions(self, monthly_arrest_proportion, crime_type='all'):
+    def plotMonthlyArrestProportions(self, monthly_arrest_proportion, crime_type='all', newgraphs=True):
         months = self.months[~np.isnan(monthly_arrest_proportion)]
         monthly_arrest_proportion = monthly_arrest_proportion[~np.isnan(monthly_arrest_proportion)]
 
@@ -113,18 +114,18 @@ class analyzeArrests:
             y_line_after = objective(months, a, b, c)
         else:
             y_line_after = np.array([0 for _ in range(len(months))])
-
-        fig, ax = plt.subplots()
-        plt.scatter(months, monthly_arrest_proportion)
-         # create a line plot for the mapping function
-        plt.plot(months, y_line, '--', color='red', label='all months')
-        plt.plot(months, y_line_before, '--', color='blue', label='prepandemic')
-        plt.plot(months, y_line_after, '--', color='green', label='postpandemic')
-        plt.axvline(x=2020.25, color='orange', linestyle='-' , label='March 2020')
-        plt.ylim(monthly_arrest_proportion.min() - 0.01, monthly_arrest_proportion.max() + 0.1)
-        plt.title('Monthly Arrest Proportion ' + crime_type)
-        plt.legend()
-        plt.savefig('arrests/charts/per_crime_type/' + crime_type + '_proportion.png')
+        if newgraphs == True:
+            fig, ax = plt.subplots()
+            plt.scatter(months, monthly_arrest_proportion)
+            # create a line plot for the mapping function
+            plt.plot(months, y_line, '--', color='red', label='all months')
+            plt.plot(months, y_line_before, '--', color='blue', label='prepandemic')
+            plt.plot(months, y_line_after, '--', color='green', label='postpandemic')
+            plt.axvline(x=2020.25, color='orange', linestyle='-' , label='March 2020')
+            plt.ylim(monthly_arrest_proportion.min() - 0.01, monthly_arrest_proportion.max() + 0.1)
+            plt.title('Monthly Arrest Proportion ' + crime_type)
+            plt.legend()
+            plt.savefig('arrests/charts/per_crime_type/' + crime_type + '_proportion.png')
         return parameters
     
     #for testing - preloaded results
@@ -167,8 +168,15 @@ class analyzeArrests:
 
         # sort
         output += 'months with highest error:' + '\n'
-        for i in sorted(errors.keys()):
-            output += (str(errors[i]) + ' error ' + str(i) + '\n')
+        k = 0
+        for i in sorted(errors.keys(), reverse=True):
+            yy = math.floor(errors[i])
+            mm = round((errors[i] - yy) * 12 + 1)
+            yr = (str(mm) + '/' + str(yy) + ' error ' + str(i) + '\n')
+            output += yr
+            if k <= 10:
+                print(yr)
+                k += 1
         return output
 
 
