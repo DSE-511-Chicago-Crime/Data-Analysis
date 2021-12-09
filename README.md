@@ -7,12 +7,10 @@
 *  Repository structure
 *  Sources
 
-# Current state notes
-* The release version of this repository does not yet have a main script, but temporary main scripts exist in feature branches.
-
-* A develop script is utilized for preliminary binding of code before cleaning and put into main.
-
-* Added scripts to extract and collate data in the scripts directory. 
+# Running the project
+> python main.py
+* Run from the directory main is in.
+* Additional options are available for arrest analysis by modifying main.py
 
 # Overview
 1. An analysis of crime records from Chicago in the years 2019, 2020, and 2021 (up to Nov. 14).
@@ -31,7 +29,7 @@
 
 2. *scripts* subdirectory contains common-use scripts and notebooks for tasks like preprocessing.
 
-3. Research questions will each have their own subdirectory with a module that can be called by main, as well as any supplementary files that module needs to run.
+3. Research questions each have their own subdirectory (*arrests*, *districts*, *domestic*) with a module that can be called by main, as well as any supplementary files that module needs to run.
 
 # Sources
 
